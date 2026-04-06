@@ -16,12 +16,75 @@ import {
  * /users:
  *   get:
  *     summary: List users with optional filters
+ *     tags: [Users]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: query
+ *         name: role
+ *         schema:
+ *           type: string
+ *           enum: [Viewer, Analyst, Admin]
+ *       - in: query
+ *         name: status
+ *         schema:
+ *           type: string
+ *           enum: [active, inactive]
+ *       - in: query
+ *         name: page
+ *         schema:
+ *           type: integer
+ *           default: 1
+ *       - in: query
+ *         name: limit
+ *         schema:
+ *           type: integer
+ *           default: 10
+ *     responses:
+ *       200:
+ *         description: Users fetched successfully
  * /users/{id}/status:
  *   patch:
  *     summary: Update a user status
+ *     tags: [Users]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: "#/components/schemas/UpdateUserStatusRequest"
+ *     responses:
+ *       200:
+ *         description: User status updated successfully
  * /users/{id}/role:
  *   patch:
  *     summary: Update a user role
+ *     tags: [Users]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: "#/components/schemas/UpdateUserRoleRequest"
+ *     responses:
+ *       200:
+ *         description: User role updated successfully
  */
 export const createUserRoutes = (userController: UserController): Router => {
   const router = Router();
@@ -42,4 +105,3 @@ export const createUserRoutes = (userController: UserController): Router => {
 
   return router;
 };
-
