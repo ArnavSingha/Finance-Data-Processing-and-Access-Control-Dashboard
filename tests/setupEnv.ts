@@ -1,0 +1,10 @@
+process.env.NODE_ENV = "test";
+process.env.PORT = "5001";
+process.env.MONGODB_URI = process.env.MONGODB_URI ?? "mongodb://localhost:27017/finance-dashboard-test";
+process.env.JWT_SECRET = process.env.JWT_SECRET ?? "test-secret-key";
+process.env.JWT_EXPIRES_IN = process.env.JWT_EXPIRES_IN ?? "1d";
+process.env.ADMIN_NAME = process.env.ADMIN_NAME ?? "System Admin";
+process.env.ADMIN_EMAIL = process.env.ADMIN_EMAIL ?? "admin@example.com";
+process.env.ADMIN_PASSWORD = process.env.ADMIN_PASSWORD ?? "ChangeMe123!";
+process.env.RATE_LIMIT_WINDOW_MS = process.env.RATE_LIMIT_WINDOW_MS ?? "900000";
+process.env.RATE_LIMIT_MAX = process.env.RATE_LIMIT_MAX ?? "100";
